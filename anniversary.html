@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Happy 2nd Anniversary 💖</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      margin: 0;
+      min-height: 100vh;
+      background: linear-gradient(135deg, #ffd6e8, #e0c3ff);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      overflow-x: hidden;
+    }
+
+    .card {
+      background: rgba(255, 255, 255, 0.9);
+      border-radius: 24px;
+      padding: 32px;
+      max-width: 420px;
+      width: 90%;
+      text-align: center;
+      box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+      animation: float 4s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-8px); }
+    }
+
+    h1 {
+      color: #ff5fa2;
+      font-size: 2.2rem;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      color: #6a4cff;
+      font-weight: 500;
+      margin-top: 0;
+    }
+
+    p {
+      color: #444;
+      line-height: 1.6;
+      font-size: 0.95rem;
+    }
+
+    .heart {
+      font-size: 2.5rem;
+      animation: pulse 1.5s infinite;
+      margin: 16px 0;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.15); }
+      100% { transform: scale(1); }
+    }
+
+    .buttons {
+      display: flex;
+      gap: 16px;
+      margin-top: 24px;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+
+    .btn {
+      padding: 14px 22px;
+      border-radius: 14px;
+      border: none;
+      background: linear-gradient(145deg, #ff8acb, #ff5fa2);
+      color: white;
+      font-size: 0.9rem;
+      cursor: pointer;
+      box-shadow: 0 8px 0 #d94b88, 0 14px 25px rgba(0,0,0,0.25);
+      transition: all 0.15s ease;
+    }
+
+    .btn:active {
+      transform: translateY(6px);
+      box-shadow: 0 2px 0 #d94b88, 0 6px 12px rgba(0,0,0,0.25);
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    .note {
+      margin-top: 20px;
+      background: #fff0f7;
+      padding: 16px;
+      border-radius: 16px;
+      box-shadow: inset 0 0 10px rgba(255,95,162,0.15);
+      color: #d94b88;
+      font-size: 0.9rem;
+    }
+
+    footer {
+      margin-top: 24px;
+      font-size: 0.75rem;
+      color: #777;
+    }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h1>Happy 2nd Anniversary 💕</h1>
+    <h2>To Us & Our Story</h2>
+
+    <div class="heart">💗</div>
+
+    <p>
+      Two years ago, something beautiful began.
+      Since then, every smile, every fight, every quiet moment
+      has made my world softer and warmer.
+    </p>
+
+    <div class="buttons">
+      <button class="btn" onclick="goMemories()">Our Memory Box 🧸</button>
+      <button class="btn" onclick="showNote(1)">Why I Love You 💖</button>
+      <button class="btn" onclick="showNote(2)">Our Memories 📸</button>
+      <button class="btn" onclick="showNote(3)">Forever Promise 💍</button>
+    </div>
+
+    <div id="note1" class="note hidden">
+      I love you for your heart, your patience, your chaos,
+      and the way you make even the worst days feel survivable.
+      You are my comfort person.
+    </div>
+
+    <div id="note2" class="note hidden">
+      From small glances to long conversations,
+      from laughs to tears — every memory with you
+      is something I want to keep forever.
+    </div>
+
+    <div id="note3" class="note hidden">
+      No matter how hard life gets,
+      I promise to choose you again and again.
+      Today, tomorrow, always.
+    </div>
+
+    <footer>
+      Made with love 🤍 | 2 Years & Counting
+    </footer>
+  </div>
+
+  <script type="module">
+  import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+  import { getDatabase, ref, push, onValue } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+
+  const firebaseConfig = {
+    apiKey: "YOUR_API_KEY",
+    authDomain: "YOUR_PROJECT_ID.firebaseapp.com",
+    databaseURL: "https://YOUR_PROJECT_ID-default-rtdb.firebaseio.com",
+    projectId: "YOUR_PROJECT_ID",
+    storageBucket: "YOUR_PROJECT_ID.appspot.com",
+    messagingSenderId: "YOUR_SENDER_ID",
+    appId: "YOUR_APP_ID"
+  };
+
+  const app = initializeApp(firebaseConfig);
+  const db = getDatabase(app);
+  const memoriesRef = ref(db, 'memories');
+
+  // NORMAL NOTES (FIXED)
+  window.showNote = function (num) {
+    document.querySelectorAll('.note').forEach(n => n.classList.add('hidden'));
+    document.getElementById('note' + num).classList.remove('hidden');
+  }
+
+  // MEMORY PAGE
+  window.goMemories = function () {
+    const card = document.querySelector('.card');
+    card.innerHTML = `
+      <h1>Our Memory Box 🧸</h1>
+      <p>Add photos — synced in real time 🤍</p>
+      <input type="file" accept="image/*" onchange="uploadImage(this.files[0])" />
+      <div id="gallery" style="margin-top:18px; display:grid; grid-template-columns:repeat(auto-fill,minmax(120px,1fr)); gap:16px;"></div>
+      <button class="btn" style="margin-top:24px" onclick="location.reload()">⬅ Go Back</button>
+    `;
+
+    onValue(memoriesRef, snapshot => {
+      const gallery = document.getElementById('gallery');
+      gallery.innerHTML = '';
+      snapshot.forEach(child => {
+        const img = document.createElement('img');
+        img.src = child.val();
+        img.style.width = '100%';
+        img.style.borderRadius = '16px';
+        img.style.boxShadow = '0 10px 20px rgba(0,0,0,0.25)';
+        gallery.appendChild(img);
+      });
+    });
+  }
+
+  window.uploadImage = function (file) {
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = e => push(memoriesRef, e.target.result);
+    reader.readAsDataURL(file);
+  }
+</script>
+</body>
+</html>
