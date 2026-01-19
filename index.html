@@ -56,7 +56,7 @@ window.showNote=n=>{document.querySelectorAll('.note').forEach(x=>x.style.displa
 
 window.openLock=()=>{
 const pass=prompt("Enter anniversary date (DDMMYYYY)");
-if(pass!=="29012024")return;
+if(pass!=="01012023")return;
 openMemories();}
 
 window.openMemories=()=>{
@@ -75,13 +75,14 @@ s.forEach(ch=>{
 const d=ch.val();
 const box=document.createElement('div');box.className='memory';
 if(d.type==='image'){const i=document.createElement('img');i.src=d.content;i.onclick=()=>{overlay.style.display='flex';overlayImg.src=d.content};box.appendChild(i)}
+if(d.type==='video'){const v=document.createElement('video');v.src=d.content;v.autoplay=true;v.loop=true;v.muted=true;v.playsInline=true;v.style.width='100%';v.style.borderRadius='12px';box.appendChild(v)}
 if(d.type==='note'){const p=document.createElement('p');p.innerText=d.content;box.appendChild(p)}
 const meta=document.createElement('div');meta.className='small';meta.innerText=`${d.by} • ${new Date(d.time).toLocaleString()}`;
 const heart=document.createElement('button');heart.className='heartBtn';heart.innerText=`💗 ${d.likes||0}`;
 heart.onclick=()=>update(ref(db,'memories/'+ch.key),{likes:(d.likes||0)+1});
 box.appendChild(meta);box.appendChild(heart);g.appendChild(box)});});}
 
-window.uploadImage=f=>{if(!f)return;const r=new FileReader();r.onload=e=>push(memoriesRef,{type:'image',content:e.target.result,time:Date.now(),by:document.getElementById('who')?.value||'You',likes:0});r.readAsDataURL(f)}
+window.uploadImage=f=>{if(!f)return;const r=new FileReader();r.onload=e=>push(memoriesRef,{type:f.type.startsWith('video')?'video':'image',content:e.target.result,time:Date.now(),by:document.getElementById('who')?.value||'You',likes:0});r.readAsDataURL(f)}
 
 window.addNote=()=>{const t=document.getElementById('noteInput');if(!t.value.trim())return;push(memoriesRef,{type:'note',content:t.value,time:Date.now(),by:document.getElementById('who').value,likes:0});t.value=''}
 </script>
