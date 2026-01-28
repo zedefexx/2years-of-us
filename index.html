@@ -4,98 +4,334 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Happy 2nd Anniversary 💖</title>
+
 <style>
 *{box-sizing:border-box;font-family:Poppins,sans-serif}
-body{margin:0;min-height:100vh;background:linear-gradient(135deg,#ffd6e8,#e0c3ff);display:flex;justify-content:center;align-items:center}
-.card{background:rgba(255,255,255,.95);border-radius:24px;padding:28px;max-width:440px;width:92%;text-align:center;box-shadow:0 20px 40px rgba(0,0,0,.15)}
+body{
+  margin:0;min-height:100vh;
+  background:linear-gradient(135deg,#ffd6e8,#e0c3ff);
+  display:flex;justify-content:center;align-items:center
+}
+.card{
+  background:rgba(255,255,255,.95);
+  border-radius:24px;padding:28px;
+  max-width:440px;width:92%;
+  text-align:center;
+  box-shadow:0 20px 40px rgba(0,0,0,.15)
+}
 h1{color:#ff5fa2;margin-bottom:6px}
 h2{color:#6a4cff;margin-top:0;font-weight:500}
 p{color:#444;font-size:.95rem}
-.buttons{display:flex;gap:12px;flex-wrap:wrap;justify-content:center;margin-top:18px}
-.btn{padding:12px 20px;border-radius:14px;border:none;background:linear-gradient(145deg,#ff8acb,#ff5fa2);color:#fff;cursor:pointer;box-shadow:0 8px 0 #d94b88}
-.btn:active{transform:translateY(6px);box-shadow:0 2px 0 #d94b88}
-.note{display:none;margin-top:16px;background:#fff0f7;padding:14px;border-radius:14px;color:#d94b88}
-textarea{width:100%;border-radius:14px;padding:10px;border:1px solid #ffd6e8;resize:none;margin-top:10px}
-.memory{background:#fff0f7;padding:12px;border-radius:16px;box-shadow:0 10px 20px rgba(0,0,0,.2)}
-.memory img{width:100%;border-radius:12px;cursor:pointer}
+
+.buttons{
+  display:flex;gap:12px;
+  flex-wrap:wrap;justify-content:center;
+  margin-top:18px
+}
+.btn{
+  padding:12px 20px;border-radius:14px;
+  border:none;
+  background:linear-gradient(145deg,#ff8acb,#ff5fa2);
+  color:#fff;cursor:pointer;
+  box-shadow:0 8px 0 #d94b88
+}
+.btn:active{
+  transform:translateY(6px);
+  box-shadow:0 2px 0 #d94b88
+}
+
+.note{
+  display:none;margin-top:16px;
+  background:#fff0f7;padding:14px;
+  border-radius:14px;color:#d94b88
+}
+textarea{
+  width:100%;border-radius:14px;
+  padding:10px;border:1px solid #ffd6e8;
+  resize:none;margin-top:10px
+}
+
+.memory{
+  background:#fff0f7;padding:12px;
+  border-radius:16px;
+  box-shadow:0 10px 20px rgba(0,0,0,.2)
+}
+.memory img,.memory video{
+  width:100%;border-radius:12px
+}
 .small{font-size:.7rem;color:#777;margin-top:6px}
-.heartBtn{background:none;border:none;font-size:1.2rem;cursor:pointer}
-#overlay{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;justify-content:center;align-items:center}
-#overlay img{max-width:90%;max-height:90%;border-radius:18px}
+.heartBtn{background:none;border:none;font-size:1.1rem;cursor:pointer}
+
+#overlay{
+  position:fixed;inset:0;
+  background:rgba(0,0,0,.7);
+  display:none;justify-content:center;align-items:center
+}
+#overlay img{
+  max-width:90%;max-height:90%;
+  border-radius:18px
+}
 </style>
 </head>
+
 <body>
+
 <div class="card" id="card">
-<h1>Happy 2nd Anniversary 💕</h1>
-<h2>To Us & Our Story</h2>
-<p>Two years, infinite memories.</p>
-<div class="buttons">
-<button class="btn" onclick="showNote(1)">Why I Love You 💖</button>
-<button class="btn" onclick="showNote(2)">Our Memories 📸</button>
-<button class="btn" onclick="showNote(3)">Forever Promise 💍</button>
-<button class="btn" onclick="openLock()">Our Memory Box 🧸</button>
-</div>
-<div id="note1" class="note">your boobiesssssssssss, hehe just kiddinggg 😁.
-       i love you bcs u stood by my side even after
-        seeing the most ugly side of me. i mean no one ever did.
-      now its you or no one else :) </div>
-<div id="note2" class="note">From small glances to long conversations,
-      from laughs to tears — every memory with you
-      is something I want to keep forever.</div>
-<div id="note3" class="note">No matter how hard life gets,
-      I promise to choose you again and again.
-      Today, tomorrow, always.
-      and dont be scared or feel awkward to share anything
-      to me, im all yours and i believe that you r mine too okay🫂</div>
+  <h1>Happy 2nd Anniversary 💕</h1>
+  <h2>To Us & Our Story</h2>
+  <p>Two years, infinite memories.</p>
+
+  <div class="buttons">
+    <button class="btn" onclick="showNote(1)">Why I Love You 💖</button>
+    <button class="btn" onclick="showNote(2)">Our Memories 🧸</button>
+    <button class="btn" onclick="openVoices()">Voice Messages 🎙️</button>
+    <button class="btn" onclick="showNote(3)">Forever Promise 💍</button>
+    <button class="btn" onclick="openLock()">Our Memory Box 📸</button>
+  </div>
+
+  <div id="note1" class="note">
+    your boobiesssssssssss, hehe just kiddinggg 😁.<br>
+    i love you bcs u stood by my side even after
+    seeing the most ugly side of me.
+    now its you or no one else :)
+  </div>
+
+  <div id="note2" class="note">
+    From small glances to long conversations,
+    from laughs to tears — every memory with you
+    is something I want to keep forever.
+  </div>
+
+  <div id="note3" class="note">
+    No matter how hard life gets,
+    I promise to choose you again and again.
+    Today, tomorrow, always.
+    im all yours, and i believe that you are mine too 🫂
+  </div>
 </div>
 
-<div id="overlay" onclick="this.style.display='none'"><img id="overlayImg"></div>
+<div id="overlay" onclick="this.style.display='none'">
+  <img id="overlayImg">
+</div>
 
 <script type="module">
-import{initializeApp}from"https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
-import{getDatabase,ref,push,onValue,update}from"https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-app.js";
+import { getDatabase, ref, push, onValue, update } from "https://www.gstatic.com/firebasejs/10.7.1/firebase-database.js";
 
-const firebaseConfig={apiKey:"AIzaSyBfT5sg9iKKz4_8ezyPm1nMcow-L8zyv_w",authDomain:"anniversary-365e4.firebaseapp.com",databaseURL:"https://anniversary-365e4-default-rtdb.asia-southeast1.firebasedatabase.app",projectId:"anniversary-365e4",storageBucket:"anniversary-365e4.appspot.com",messagingSenderId:"156417240087",appId:"1:156417240087:web:92c1d4e5a989294e678052"};
+const firebaseConfig = {
+  apiKey: "AIzaSyBfT5sg9iKKz4_8ezyPm1nMcow-L8zyv_w",
+  authDomain: "anniversary-365e4.firebaseapp.com",
+  databaseURL: "https://anniversary-365e4-default-rtdb.asia-southeast1.firebasedatabase.app",
+  projectId: "anniversary-365e4",
+  storageBucket: "anniversary-365e4.appspot.com",
+  messagingSenderId: "156417240087",
+  appId: "1:156417240087:web:92c1d4e5a989294e678052"
+};
 
-const app=initializeApp(firebaseConfig);
-const db=getDatabase(app);
-const memoriesRef=ref(db,'memories');
+const app = initializeApp(firebaseConfig);
+const db = getDatabase(app);
 
-window.showNote=n=>{document.querySelectorAll('.note').forEach(x=>x.style.display='none');document.getElementById('note'+n).style.display='block'}
+const memoriesRef = ref(db,'memories');
+const voicesRef   = ref(db,'voices');
 
-window.openLock=()=>{
-const pass=prompt("Enter anniversary date (DDMMYYYY)");
-if(pass!=="29012024")return;
-openMemories();}
+window.showNote = n => {
+  document.querySelectorAll('.note').forEach(x=>x.style.display='none');
+  document.getElementById('note'+n).style.display='block';
+};
 
-window.openMemories=()=>{
-const c=document.getElementById('card');
-c.innerHTML=`<h1>Our Memory Box 🧸</h1><p>Everything we share 🤍</p>
-<input type='file' accept='image/*' onchange='uploadImage(this.files[0])'>
-<textarea id='noteInput' placeholder='Write a memory 💌'></textarea>
-<select id='who'><option>You</option><option>Her</option></select>
-<button class='btn' onclick='addNote()'>Add Note 📝</button>
-<div id='gallery' style='margin-top:18px;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:16px'></div>
-<button class='btn' style='margin-top:20px' onclick='location.reload()'>⬅ Back</button>`;
+// 🔐 Memory Box
+window.openLock = () => {
+  const pass = prompt("Enter anniversary date (DDMMYYYY)");
+  if(pass==="29012024") openMemories();
+};
 
-onValue(memoriesRef,s=>{
-const g=document.getElementById('gallery');g.innerHTML='';
-s.forEach(ch=>{
-const d=ch.val();
-const box=document.createElement('div');box.className='memory';
-if(d.type==='image'){const i=document.createElement('img');i.src=d.content;i.onclick=()=>{overlay.style.display='flex';overlayImg.src=d.content};box.appendChild(i)}
-if(d.type==='video'){const v=document.createElement('video');v.src=d.content;v.autoplay=true;v.loop=true;v.muted=true;v.playsInline=true;v.style.width='100%';v.style.borderRadius='12px';box.appendChild(v)}
-if(d.type==='note'){const p=document.createElement('p');p.innerText=d.content;box.appendChild(p)}
-const meta=document.createElement('div');meta.className='small';meta.innerText=`${d.by} • ${new Date(d.time).toLocaleString()}`;
-const heart=document.createElement('button');heart.className='heartBtn';heart.innerText=`💗 ${d.likes||0}`;
-heart.onclick=()=>update(ref(db,'memories/'+ch.key),{likes:(d.likes||0)+1});
-box.appendChild(meta);box.appendChild(heart);g.appendChild(box)});});}
+window.openMemories = () => {
+  const c=document.getElementById('card');
+  c.innerHTML=`
+  <h1>Our Memory Box 🧸</h1>
+  <input type="file" accept="image/*,video/*" onchange="handleUpload(this.files[0])">
+  <textarea id="noteInput" placeholder="Write a memory 💌"></textarea>
+  <select id="who"><option>jujju</option><option>achu</option></select>
+  <button class="btn" onclick="addNote()">Add</button>
+  <div id="gallery" style="margin-top:18px;display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:16px"></div>
+  <button class="btn" onclick="location.reload()">⬅ Back</button>
+  `;
 
-window.uploadImage=f=>{if(!f)return;const r=new FileReader();r.onload=e=>push(memoriesRef,{type:f.type.startsWith('video')?'video':'image',content:e.target.result,time:Date.now(),by:document.getElementById('who')?.value||'You',likes:0});r.readAsDataURL(f)}
+  onValue(memoriesRef,s=>{
+    const g=document.getElementById('gallery'); g.innerHTML='';
+    s.forEach(ch=>{
+      const d=ch.val();
+      const box=document.createElement('div'); box.className='memory';
 
-window.addNote=()=>{const t=document.getElementById('noteInput');if(!t.value.trim())return;push(memoriesRef,{type:'note',content:t.value,time:Date.now(),by:document.getElementById('who').value,likes:0});t.value=''}
+      if(d.type==='image'){
+        const i=document.createElement('img');
+        i.src=d.content;
+        i.onclick=()=>{overlay.style.display='flex';overlayImg.src=d.content};
+        box.appendChild(i);
+      }
+
+      if(d.type==='video'){
+  const v = document.createElement('video');
+  v.src = d.content;
+  v.controls = true;
+  v.loop = true;
+  v.muted = true;      // required for autoplay
+  v.autoplay = true;  // browser allows only if muted
+  v.style.width = '100%';
+  v.style.borderRadius = '12px';
+  box.appendChild(v);
+}
+
+      if(d.type==='note'){
+        const p=document.createElement('p');
+        p.innerText=d.content;
+        box.appendChild(p);
+      }
+
+      const meta=document.createElement('div');
+      meta.className='small';
+      meta.innerText=`${d.by} • ${new Date(d.time).toLocaleString()}`;
+      box.appendChild(meta);
+
+      g.appendChild(box);
+    });
+  });
+};
+
+window.uploadImage=f=>{
+  const r=new FileReader();
+  r.onload=e=>push(memoriesRef,{type:'image',content:e.target.result,by:'You',time:Date.now()});
+  r.readAsDataURL(f);
+};
+
+
+
+
+
+window.handleUpload = file => {
+  if (!file) return;
+
+  const isVideo = file.type.startsWith('video/');
+  const isImage = file.type.startsWith('image/');
+
+  if (!isVideo && !isImage) {
+    alert("Only images or videos allowed 🥲");
+    return;
+  }
+
+  // Optional size limit (VERY IMPORTANT for Firebase)
+  if (file.size > 15 * 1024 * 1024) {
+    alert("File too big 🫠 Keep it under 15MB");
+    return;
+  }
+
+  const reader = new FileReader();
+  reader.onload = e => {
+    push(memoriesRef, {
+      type: isVideo ? 'video' : 'image',
+      content: e.target.result,
+      by: document.getElementById('who')?.value || 'You',
+      time: Date.now()
+    });
+  };
+  reader.readAsDataURL(file);
+};
+
+
+
+
+
+
+
+
+window.addNote=()=>{
+  const t=document.getElementById('noteInput');
+  push(memoriesRef,{type:'note',content:t.value,by:who.value,time:Date.now()});
+  t.value='';
+};
+
+// 🎙️ VOICES
+let currentUser = localStorage.getItem('voiceUser');
+
+window.openVoices = () => {
+  const c=document.getElementById('card');
+  if(!currentUser){
+    c.innerHTML=`
+    <h1>Who are you? 💗</h1>
+    <button class="btn" onclick="setUser('jujju')">I am jujju 🫂</button>
+    <button class="btn" onclick="setUser('achu')">I am achu 💕</button>
+    `;
+    return;
+  }
+  renderVoices();
+};
+
+window.setUser=u=>{
+  localStorage.setItem('voiceUser',u);
+  currentUser=u;
+  renderVoices();
+};
+
+window.resetVoiceIdentity=()=>{
+  localStorage.removeItem('voiceUser');
+  location.reload();
+};
+
+function renderVoices(){
+  const c=document.getElementById('card');
+  c.innerHTML=`
+  <h1>Voice Messages 🎧</h1>
+  <button class="btn" id="recBtn">🎙️ Record</button>
+  <button class="btn" onclick="resetVoiceIdentity()">Reset Who I Am 🔁</button>
+  <div id="list" style="margin-top:20px"></div>
+  <button class="btn" onclick="location.reload()">⬅ Back</button>
+  `;
+
+  setupRecorder();
+
+  onValue(voicesRef,s=>{
+    const l=document.getElementById('list'); l.innerHTML='';
+    s.forEach(ch=>{
+      const d=ch.val();
+      const box=document.createElement('div'); box.className='memory';
+
+      const a=document.createElement('audio');
+      a.controls=true; a.src=d.content;
+      box.appendChild(a);
+
+      if(d.by===currentUser){
+        const del=document.createElement('button');
+        del.innerText='🗑️';
+        del.onclick=()=>update(ref(db,'voices/'+ch.key),null);
+        box.appendChild(del);
+      }
+      l.appendChild(box);
+    });
+  });
+}
+
+function setupRecorder(){
+  const btn=document.getElementById('recBtn');
+  let rec,chunks=[];
+  btn.onclick=async()=>{
+    if(!rec){
+      const s=await navigator.mediaDevices.getUserMedia({audio:true});
+      rec=new MediaRecorder(s);
+      rec.start(); btn.innerText='⏹ Stop';
+      rec.ondataavailable=e=>chunks.push(e.data);
+      rec.onstop=()=>{
+        const b=new Blob(chunks,{type:'audio/webm'});
+        chunks=[];
+        const r=new FileReader();
+        r.onload=e=>push(voicesRef,{content:e.target.result,by:currentUser,time:Date.now()});
+        r.readAsDataURL(b);
+        rec=null;
+      };
+    } else {
+      rec.stop(); btn.innerText='🎙️ Record';
+    }
+  };
+}
 </script>
 </body>
 </html>
-
-
